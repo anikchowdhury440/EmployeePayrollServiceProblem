@@ -6,6 +6,8 @@ public class EmployeePayrollService {
 	public enum IOService {CONSOLE_ID, FILE_IO, DB_IO, REST_IO}
 	private List<EmployeePayrollData> employeePayrollList;
 	
+	public EmployeePayrollService() {}
+	
 	public EmployeePayrollService(List<EmployeePayrollData> employeePayrollList) {
 		this.employeePayrollList = employeePayrollList;
 	}
