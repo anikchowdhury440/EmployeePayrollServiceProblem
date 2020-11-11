@@ -10,6 +10,7 @@ import org.junit.Test;
 public class NIOFileAPITest {
 	private static String PATH = "C:\\Users\\Anik Chowdhury\\Desktop\\Fellowship\\TestFileIO";
 	private static String DIRECTORY = "TempFile";
+	private static String DIRECTORY2 = "TempFile2";
 	
 	@Test
 	public void givenPathWhenCheckedThenConfirm() throws IOException {
@@ -42,5 +43,12 @@ public class NIOFileAPITest {
 		
 		//List Files, Directories as well as files with extension
 		Files.newDirectoryStream(playPath).forEach(System.out::println);
+	}
+	
+	@Test
+	public void givenDirectoryWhenWatchedListsAllTheActivities() throws IOException {
+		Path dir = Paths.get(PATH + "\\" + DIRECTORY2);
+		Files.list(dir).filter(Files::isRegularFile).forEach(System.out::println);
+		new Java8WatchServiceExample(dir).processEvents();
 	}
 }
