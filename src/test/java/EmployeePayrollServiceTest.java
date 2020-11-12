@@ -20,7 +20,7 @@ public class EmployeePayrollServiceTest {
 	}
 	
 	@Test
-	public void givenFileOnPrintFromFile_ShouldMatchEmployeeCount() {
+	public void givenFile_OnPrintFromFile_ShouldMatchEmployeeCount() {
 		EmployeePayrollService employeePayrollService = new EmployeePayrollService();
 		employeePayrollService.printData(EmployeePayrollService.IOService.FILE_IO);
 		long entries = employeePayrollService.countEntries(EmployeePayrollService.IOService.FILE_IO);
