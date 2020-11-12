@@ -1,8 +1,14 @@
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class EmployeePayRollFileIOService {
 	public static String PAYROLL_FILE_NAME = "payroll-file.txt";
@@ -37,5 +43,19 @@ public class EmployeePayRollFileIOService {
 			e.printStackTrace();
 		}
 		return entries;
+	}
+	
+	public List<EmployeePayrollData> readData() {
+		List<EmployeePayrollData> employeePayrollList = new ArrayList<>();
+		try {
+			List<String> stringList = Files.lines(Paths.get(PAYROLL_FILE_NAME))
+					.collect(Collectors.toList());
+			employeePayrollList = (List) stringList;
+			employeePayrollList.forEach(employee -> System.out.println(employee));
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return employeePayrollList;
 	}
 }
