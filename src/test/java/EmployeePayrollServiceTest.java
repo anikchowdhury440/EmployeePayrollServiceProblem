@@ -9,8 +9,8 @@ public class EmployeePayrollServiceTest {
 	public void givenEmployees_WhenWrittenToFile_ShouldMatchEmployeeEntries() {
 		EmployeePayrollData[] empArray = {
 				new EmployeePayrollData(1, "Anik Chowdhury", 100000.0),
-				new EmployeePayrollData(1, "Avijit Chowdhury", 200000.0),
-				new EmployeePayrollData(1, "Arinjit Chowdhury", 300000.0),
+				new EmployeePayrollData(2, "Avijit Chowdhury", 200000.0),
+				new EmployeePayrollData(3, "Arinjit Chowdhury", 300000.0),
 		};
 		EmployeePayrollService employeePayrollService = new EmployeePayrollService(Arrays.asList(empArray));
 		employeePayrollService.writeEmployeePayrollData(EmployeePayrollService.IOService.FILE_IO);
@@ -20,7 +20,7 @@ public class EmployeePayrollServiceTest {
 	}
 	
 	@Test
-	public void givenFileOnReadingFromFile_ShouldMatchEmployeeCount() {
+	public void givenFile_OnPrintingFromFile_ShouldMatchEmployeeCount() {
 		EmployeePayrollService employeePayrollService = new EmployeePayrollService();
 		employeePayrollService.printData(EmployeePayrollService.IOService.FILE_IO);
 		long entries = employeePayrollService.countEntries(EmployeePayrollService.IOService.FILE_IO);
